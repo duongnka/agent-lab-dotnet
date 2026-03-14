@@ -1,32 +1,30 @@
 @using SocOps.Models
 
-<div class="flex flex-col min-h-full bg-gray-50">
+<div class="game-screen">
     <!-- Header -->
-    <header class="flex items-center justify-between p-3 bg-white border-b border-gray-200">
-        <button
-            @onclick="OnReset"
-            class="text-gray-500 text-sm px-3 py-1.5 rounded active:bg-gray-100">
-            ← Back
+    <header class="game-header">
+        <button @onclick="OnReset" class="quit-btn">
+            ◀ QUIT
         </button>
-        <h1 class="font-bold text-gray-900">Soc Ops</h1>
+        <h1 class="game-title animate-flicker">SOC OPS</h1>
         <div class="w-16"></div>
     </header>
 
     <!-- Instructions -->
-    <p class="text-center text-gray-500 text-sm py-2 px-4">
-        Tap a square when you find someone who matches it.
+    <p class="game-instructions">
+        FIND SOMEONE WHO MATCHES · TAP TO MARK
     </p>
 
-    <!-- Bingo indicator -->
+    <!-- Bingo banner -->
     @if (HasBingo)
     {
-        <div class="bg-amber-100 text-amber-800 text-center py-2 font-semibold text-sm">
-            🎉 BINGO! You got a line!
+        <div class="bingo-banner animate-glow-pulse">
+            ★ BINGO! LINE COMPLETE! ★
         </div>
     }
 
     <!-- Board -->
-    <div class="flex-1 flex items-center justify-center p-3">
+    <div class="board-wrap">
         <BingoBoard
             Board="@Board"
             WinningSquareIds="@WinningSquareIds"
